@@ -196,7 +196,7 @@ if __name__ == '__main__':
     name = []
     for file in files:
         file_path = os.path.join(dir_path, file)
-        if file.endswith('28_pendigits.npz') or file.endswith('xxxx.mat'):
+        if file.endswith('.npz') or file.endswith('.mat'):
             name.append(file)
             file = file.replace('../datasets/','')
             l,d = parameters[(file,'l')],parameters[(file,'d')]
