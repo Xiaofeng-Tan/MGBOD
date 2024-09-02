@@ -69,7 +69,7 @@ To reproduce the results reported in our paper, you can run the code as follows:
 cd main
 python main.py
 ```
-The result will save in the folder ./results.
+The result will be saved in the folder ./results.
 
 ## **Modules**
 This project contains the following important modules:
