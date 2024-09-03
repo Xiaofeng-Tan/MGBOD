@@ -61,7 +61,10 @@ conda env create -f environment.yml
 ```
 
 ### Datasets
-The datasets are selected from [BElloney](https://github.com/BElloney/Outlier-detection) and [ADBench](https://github.com/Minqi824/ADBench), and provided in ./datasets.
+The datasets are selected from [BElloney](https://github.com/BElloney/Outlier-detection) and [ADBench](https://github.com/Minqi824/ADBench), and provided in 
+```
+./datasets.
+```
 
 ### **Running** 
 To reproduce the results reported in our paper, you can run the code as follows:
@@ -73,10 +76,10 @@ The result will be saved in the folder ./results.
 
 ## **Modules**
 This project contains the following important modules:
-1. ./main/FRS_OD.py: the implementation of FRS-based outlier detection methods, and the variant in GB views;
-2. ./main/GB.py: the implementation of GB generation methods and views update;
-3. ./main/units.py: some auxiliary function;
-4. ./paramaters.pkl: the hyperparameter settings.
+1. ``./main/FRS_OD.py``: the implementation of FRS-based outlier detection methods, and the variant in GB views;
+2. ``./main/GB.py``: the implementation of GB generation methods and views update;
+3. ``./main/units.py``: some auxiliary function;
+4. ``./paramaters.pkl``: the hyperparameter settings.
 
 
 ## Appendix
