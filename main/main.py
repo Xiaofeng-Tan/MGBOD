@@ -128,7 +128,7 @@ def get_uncertainty(index,e_list,weight_list):
 
 def test(X,y,_l,_d,_k):
     '''
-        Outlier detection in original views.
+        Experiments of FRS + one view, FRS + multi-views, proposed method + one view, proposed method.
         Args:
             X (torch.Tensor): tensor of shape (N, M), where N and M are the number of samples and features, respectively.
             y (torch.Tensor): tensor of shape (N), the lables of all samples. [! NOTE THAT THE LABELS ARE NOT USED FOR TRAINING].
