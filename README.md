@@ -106,16 +106,13 @@ This project contains the following important modules:
 
 
 ## Appendix
-
 ### I. View generation
-
-For the generation of views, the proposed method begins with the original finest scale view, where each sample is considered as a granular ball. Then, it iteratively generates a coarser scale view by combining granular balls within the prior finer scale view until all samples are grouped into one granular ball, at which the coarsest scale view is obtained.
+The proposed method starts by generating the finest-scale view, where each sample is treated as a granular ball. From there, it iteratively produces coarser-scale views by merging granular balls from the previous finer-scale view, continuing this process until all samples are combined into a single granular ball, forming the coarsest-scale view.
 
 ### II. Relationship between the number of views and samples
+The number of views varies depending on the dataset and is inherently influenced by the number of samples. While the exact number of views differs across datasets, it generally increases with the number of samples. To explore this relationship, both theoretical analyses and experiments are conducted.
 
-In fact, the number of views varies with different datasets and is inherently determined by the number of samples. Across all datasets, although the number of views is different, it approximately increases with the number of samples. To uncover their relationship,  theoretical analyses and experiments are performed.
-
-Assume that the relationship between the number of granular balls in the $k$-th view and $(k+1)$-th view meets that
+Let’s assume the relationship between the number of granular balls in the $k$-th view and the $(k+1)$-th view follows that
 $$
 \begin{equation}
 \begin{aligned}
@@ -125,7 +122,7 @@ $$
 $$
 where $|GBS_k|$ is the number of granular balls in the $k$-th view, $q (0<q<1)$ is a constant determined by the given data, and $|U|$ is the number of all samples.
 
-In other words, for an infinite dataset, the ratio of the number of granular balls in the $(k + 1)$-th view to that in the $k$-th view converges to a constant $q$, while this value may vary across different datasets and is determined by the specific dataset. This formula suggests that the number of granular balls decreases with the view generation process at a certain rate. Considering that the number of the original finest scale view $|GBS_1|$ is equal to the number of all samples $|U|$, some constraints can be introduced:
+In simpler terms, when dealing with an infinitely large dataset, the ratio of granular balls between the $(k + 1)$-th view and the $k$-th view eventually settles into a constant value, $q$. However, this value can vary depending on the dataset and is unique to each one. This means that, as view generated, the number of granular balls decreases at a steady rate. Since the initial number of granular balls, $|GBS_1|$, matches the total number of samples, $|U|$, we can introduce some constraints based on relationship as follows:
 $$
 \begin{equation}
 \begin{aligned}
@@ -152,7 +149,7 @@ $$
 
 Since there is only one granule ball in the last view, i.e., $|GBS_K|=1$. Then, we have $1 \le k \leq -\log_q|U|$ and $K \sim -\log_{q}|U| (0<q<1)$.
 
-To examine the relationship between the number of views and sample size, we generated datasets with the number of samples from 50 to 20,000 at a step size of 50 and recorded the number of granular balls and views, respectively. 
+To explore how the number of views relates to the sample size, we created datasets with sample sizes ranging from 50 to 20,000, increasing by 50 samples at each step. We then recorded both the number of granular balls and the number of views for each dataset.
 
 | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ | $\vert U \vert$ | $K$ |
 |-------|-----|-------|-----|-------|-----|-------|-----|-------|-----|-------|-----|-------|-----|-------|-----|
@@ -207,7 +204,7 @@ To examine the relationship between the number of views and sample size, we gene
 | 2450  | 7   | 4950  | 8   | 7450  | 8   | 9950  | 8   | 12450 | 8   | 14950 | 8   | 17450 | 8   | 19950 | 9   |
 | 2500  | 7   | 5000  | 8   | 7500  | 8   | 10000 | 9   | 12500 | 8   | 15000 | 8   | 17500 | 9   | 20000 | 9   |
 
-From this table, it can be seen that the number of generated views varies with different sizes of samples, but approximately increases with the sample size. To further validate their relationship, we conducted a statistical analysis on the obtained data, and the results are shown as follow.
+From this table, it’s evident that the number of generated views changes with different sample sizes but generally increases as the sample size grows. To further investigate this relationship, we performed a statistical analysis on the data. The results of this analysis are presented below.
 
 | $K$ | $\vert U \vert$      | $\log_{10} \vert U \vert$ | $(\log_{10} K) / \vert U \vert$ |
 |-----|------------|-----------------|-----------------------|
@@ -216,7 +213,7 @@ From this table, it can be seen that the number of generated views varies with d
 | 7   | 3621.5190  | 3.5589          | 0.5084                |
 | 8   | 11294.0928 | 4.0529          | 0.5066                |
 
-In this table, the first and second columns denote the number of generated views and the average number of samples under the same number of views, respectively. The third and fourth columns represent the logarithmic value of the average sample size and the ratio of the logarithmic value of the number of generated views to the average sample size. Note that the results for the numbers of views 3, 4, 9, and 10 are presented due to insufficient data to reflect the tendency. By observing the results in the last column, the ratio values are approximately equal and converge to a constant ($\approx 0.5 $), indicating that the number of views and the number of samples satisfy that:
+In this table, the first and second columns show the number of generated views and the average number of samples corresponding to each number of views, respectively. The third and fourth columns display the logarithmic values of the average sample size and the ratio of the logarithmic value of the number of generated views to the average sample size. Note that results are presented only for view numbers 3, 4, 9, and 10, as data for other numbers of views was insufficient to reveal a clear trend. By examining the results in the last column, it is observed that the ratio values are approximately equal and converge to a constant (approximately 0.5), suggesting that the number of views and the number of samples follow the relationship:
 $$
 \begin{equation}
 \begin{aligned}
@@ -233,9 +230,9 @@ $$
 These results are consistent with the conclusion. In such cases, the constant $q$ is equal to $\frac{1}{\sqrt{10}}$.
 
 ### III. Time complexity
-The proposed method consists of three stages: the generation of multi-scale views, the computation of sample outlier scores, and the training of weighted SVM. In the first draft, we analyzed the time complexity of computing sample outlier scores and the training of weighted SVM, and their time costs are both $O(|A||U|^2)$, where $|A|$ is the number of attributes, and $|U|$ is the number of samples. Additionally, we mentioned that the time cost for generating single-scale granular balls is less than $O(|U|\log|U|)$ in subsection 3.3. Therefore, it is necessary to analyze the time cost for the generation of multi-scale views.
+The proposed method is structured into three stages: generating multi-scale views, computing sample outlier scores, and training a weighted SVM. In the initial draft, we analyzed the time complexity of computing sample outlier scores and training the weighted SVM, both of which have time costs of $O(|A||U|^2)$, where $|A|$ is the number of attributes and $|U|$ is the number of samples. We also noted that generating single-scale granular balls costs less than $O(|U|\log|U|)$, as detailed in subsection 3.3. Consequently, it is important to evaluate the time cost associated with generating multi-scale views.
 
-For the $k$-th scale view, the time cost for the generation of granular balls is $O(|GBS_k|\log|GBS_k|)$, where $|GBS_k|$ denotes the number of granular balls in the $k$-th scale view.  Hence, the overall time cost of multi-scale view generation is $O(\sum_{k=1}^{K}|GBS_k|\log|GBS_k|)$, where $K = |GBSV|$ is the number of generated views. As discussed above, the relationship between the number of views and samples approximately obeys: $K \sim \log |U|$. As a result, the time cost of view generation can be calculated as: 
+For the $k$-th scale view, the time cost to generate granular balls is $O(|GBS_k|\log|GBS_k|)$, where $|GBS_k|$ represents the number of granular balls in the $k$-th scale view. Thus, the total time cost for generating multi-scale views is $O(\sum_{k=1}^{K}|GBS_k|\log|GBS_k|)$, with $K = |GBSV|$ denoting the number of generated views. As discussed, the number of views $K$ approximately follows $K \sim \log |U|$. Therefore, the time cost for view generation can be computed as follows:
 $$
 	\begin{equation}
 \begin{aligned}
@@ -247,7 +244,7 @@ $$
 \end{equation}
 $$
 
-Similarly, the time cost of anomaly detection for all views can be computed as follows 
+Similarly, the time cost for anomaly detection across all views can be computed as follows:
 $$
 	\begin{equation}
 \begin{aligned}
@@ -267,4 +264,4 @@ $$
         \end{aligned}
 \end{equation}
 $$
-The results indicate that the proposed multiple-view method introduces an additional cost of $\log |U|$ times compared to the single view methods. However, it is evident in the theory and experiments that this extra cost is relatively small.
+The results indicate that the proposed multiple-view method introduces an additional cost that scales as $\log |U|$ compared to single-view methods. However, both theoretical analysis and experimental results demonstrate that this additional cost is relatively minor.
