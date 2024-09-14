@@ -147,7 +147,7 @@ $$
 \end{equation}
 $$
 
-Since there is only one granule ball in the last view, i.e., $|GBS_K|=1$. Then, we have $1 \le k \leq -\log_q|U|$ and $K \sim -\log_{q}|U| (0<q<1)$.
+Since there is only one granule ball in the last view, i.e., $|GBS_K|=1$. Then, we have $1 \le k \leq -\log_q|U| + 1$ and $K \sim -\log_{q}|U| + 1 (0<q<1)$.
 
 To explore how the number of views relates to the sample size, we created datasets with sample sizes ranging from 50 to 20,000, increasing by 50 samples at each step. We then recorded both the number of granular balls and the number of views for each dataset.
 
