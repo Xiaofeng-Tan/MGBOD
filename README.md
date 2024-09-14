@@ -106,6 +106,7 @@ This project contains the following important modules:
 
 
 ## Appendix
+
 ### I. View generation
 
 For the generation of views, the proposed method begins with the original finest scale view, where each sample is considered as a granular ball. Then, it iteratively generates a coarser scale view by combining granular balls within the prior finer scale view until all samples are grouped into one granular ball, at which the coarsest scale view is obtained.
@@ -116,23 +117,28 @@ In fact, the number of views varies with different datasets and is inherently de
 
 Assume that the relationship between the number of granular balls in the $k$-th view and $(k+1)$-th view meets that
 $$
-\begin{align}
+\begin{equation}
+\begin{aligned}
 \lim_{|U|\rightarrow \infty } \mathbb{E}[\frac{|GBS_{k+1}|}{|GBS_{k}|}]= q, 
-\end{align}
+\end{aligned}
+\end{equation}
 $$
 where $|GBS_k|$ is the number of granular balls in the $k$-th view, $q (0<q<1)$ is a constant determined by the given data, and $|U|$ is the number of all samples.
 
 In other words, for an infinite dataset, the ratio of the number of granular balls in the $(k + 1)$-th view to that in the $k$-th view converges to a constant $q$, while this value may vary across different datasets and is determined by the specific dataset. This formula suggests that the number of granular balls decreases with the view generation process at a certain rate. Considering that the number of the original finest scale view $|GBS_1|$ is equal to the number of all samples $|U|$, some constraints can be introduced:
 $$
+\begin{equation}
 \begin{aligned}
 & \lim_{|U|\rightarrow\infty}{\mathbb{E}[\frac{|GBS_{k + 1}|}{|GBS_{k}|}]=q,(0<q<1)}\\
 & \text{s.t.} |GBS_k|\in N_+, 1 \le k \le K,
 \end{aligned}
+\end{equation}
 $$
 where $K = |GBSV|$ is the number of generated views.
 
 Further, the relationship between the number of views $K = |GBSV|$ and the number of sample $|U|$ can be deduced as
 $$
+\begin{equation}
 \begin{aligned}
 &|GBS_{k+1}|=q |GBS_{k}|, (0<q<1),\\
 & \text{s.t.} |GBS_k|\in N_{+}, 1 \le k\le K,\\
@@ -141,6 +147,7 @@ $$
 \iff & |GBS_k|=q^{k - 1}|U|,(0<q<1),\\
 & \text{s.t.} |GBS_k|\in N_{+}, 1 \le k \le K.
 \end{aligned}
+\end{equation}
 $$
 
 Since there is only one granule ball in the last view, i.e., $|GBS_K|=1$. Then, we have $1 \le k \leq -\log_q|U|$ and $K \sim -\log_{q}|U| (0<q<1)$.
@@ -211,6 +218,7 @@ From this table, it can be seen that the number of generated views varies with d
 
 In this table, the first and second columns denote the number of generated views and the average number of samples under the same number of views, respectively. The third and fourth columns represent the logarithmic value of the average sample size and the ratio of the logarithmic value of the number of generated views to the average sample size. Note that the results for the numbers of views 3, 4, 9, and 10 are presented due to insufficient data to reflect the tendency. By observing the results in the last column, the ratio values are approximately equal and converge to a constant ($\approx 0.5 $), indicating that the number of views and the number of samples satisfy that:
 $$
+\begin{equation}
 \begin{aligned}
 &\frac{\log_{10} K}{|U|}  \approx 0.5,\\
 \iff& |U|  \approx 2 \log_{10} K, \\
@@ -218,7 +226,8 @@ $$
 \iff& |U|  \approx \log_{\sqrt{10}} K, \\
 \iff& |U|  \approx -\log_{\frac{1}{\sqrt{10}}} K. \\
 %\iff& K  \approx 10^{|U|/2}
-\end{aligned} 
+\end{aligned}
+\end{equation} 
 $$
 
 These results are consistent with the conclusion. In such cases, the constant $q$ is equal to $\frac{1}{\sqrt{10}}$.
@@ -228,30 +237,34 @@ The proposed method consists of three stages: the generation of multi-scale view
 
 For the $k$-th scale view, the time cost for the generation of granular balls is $O(|GBS_k|\log|GBS_k|)$, where $|GBS_k|$ denotes the number of granular balls in the $k$-th scale view.  Hence, the overall time cost of multi-scale view generation is $O(\sum_{k=1}^{K}|GBS_k|\log|GBS_k|)$, where $K = |GBSV|$ is the number of generated views. As discussed above, the relationship between the number of views and samples approximately obeys: $K \sim \log |U|$. As a result, the time cost of view generation can be calculated as: 
 $$
-	\begin{aligned}
+	\begin{equation}
+\begin{aligned}
         & O(\sum_{k=1}^{K}|GBS_k|\log|GBS_k|)\\
     \leq   & O(\sum_{k=1}^{K}|U|\log |U|)\\
     =   & O(K|U|\log |U|)\\
     \leq   & O(|U| (\log|U|)^2). \\
         \end{aligned}
+\end{equation}
 $$
 
 Similarly, the time cost of anomaly detection for all views can be computed as follows 
 $$
-	\begin{aligned}
+	\begin{equation}
+\begin{aligned}
         & O(\sum_{k=1}^{K} |A| |GBS_k|^2)\\
     \leq  & O(\sum_{k=1}^{K} |A||U|^2 )\\
     =   & O(K |A| |U|^2 )\\
     \leq   & O(|A||U|^2 \log |U|)\\
         \end{aligned}
+\end{equation}
 $$
 Hence, the overall time cost is calculated as
 $$
+\begin{equation}
 	\begin{aligned}
         & O(|U| (\log|U|)^2 + |A||U|^2 \log |U| + |A||U|^2)\\
     =   & O(|A||U|^2 \log |U|).\\
         \end{aligned}
+\end{equation}
 $$
 The results indicate that the proposed multiple-view method introduces an additional cost of $\log |U|$ times compared to the single view methods. However, it is evident in the theory and experiments that this extra cost is relatively small.
-
-
