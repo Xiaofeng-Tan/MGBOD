@@ -5,7 +5,11 @@ Can Gao, [Xiaofeng Tan](https://xiaofeng-tan.github.io/), Jie Zhou, Weiping Ding
 
 This repository is the official implementation of the TKDE 2025 "**Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls**". If you have questions, feel free to reach out through 📧 email (xiaofengtan@seu.edu.cn)!
 
-<!-- Visit our [**webpage**](https://www.pinlab.org/coskad) for more details. -->
+## News
+- 2025-03-15: Release codes for reproducing other benchmarks.
+- 2024-12-24: Our paper is accepted by IEEE Transactions on Knowledge and Data Engineering.
+- 2024-09-13: Release codes for the main experiment.
+
 ## Abstract
 Outlier detection refers to the identification of anomalous samples that deviate significantly from the distribution of normal data and has been extensively studied and used in a variety of practical tasks. However, most unsupervised outlier detection methods are carefully designed to detect specified outliers, while real-world data may be entangled with different types of outliers. In this study, we propose a fuzzy rough sets-based multi-scale outlier detection method to identify various types of outliers. Specifically, a novel fuzzy rough sets-based method that integrates relative fuzzy granule density is first introduced to improve the capability of detecting local outliers. Then, a multi-scale view generation method based on granular-ball computing is proposed to collaboratively identify group outliers at different levels of granularity. Moreover, reliable outliers and inliers determined by the three-way decision are used to train a weighted support vector machine to further improve the performance of outlier detection. The proposed method innovatively transforms unsupervised outlier detection into a semi-supervised classification problem and for the first time explores the fuzzy rough sets-based outlier detection from the perspective of multi-scale granular balls, allowing for high adaptability to different types of outliers. Extensive experiments carried out on both artificial and UCI datasets demonstrate that the proposed outlier detection method significantly outperforms the state-of-the-art methods, improving the results by at least 8.48% in terms of the Area Under the ROC Curve (AUROC) index.
 
