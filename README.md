@@ -6,7 +6,7 @@ Can Gao, [Xiaofeng Tan](https://xiaofeng-tan.github.io/), Jie Zhou, Weiping Ding
 This repository is the official implementation of the TKDE 2025 "**Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls**". If you have questions, feel free to reach out through 📧 email (xiaofengtan@seu.edu.cn)!
 
 ## News
-- 2025-03-15: Release codes for reproducing other benchmarks in the folder ["test"](./test). Thanks, [@ Zhiyu Chen](https://github.com/czy629).
+- 2025-03-15: Release codes for reproducing other benchmarks in the folder ["test"](./test). Thanks, [@Zhiyu Chen](https://github.com/czy629).
 - 2024-12-24: Our paper is accepted by IEEE Transactions on Knowledge and Data Engineering.
 - 2024-09-13: Release codes for the main experiment.
 
