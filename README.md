@@ -5,8 +5,19 @@ Can Gao, [Xiaofeng Tan](https://xiaofeng-tan.github.io/), Jie Zhou, Weiping Ding
 
 This repository is the official implementation of the TKDE 2025 "**Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls**". If you have questions, feel free to reach out through 📧 email (xiaofengtan@seu.edu.cn)!
 
+## 🌟🌟 Related Works
+
+Here are some other outstanding outlier detection works based on Granular Balls. Feel free to check them out:
+
+- A Kernelized Fuzzy Approximation Fusion Model with Granular-ball Computing for Outlier Detection (Information Fusion) [pdf](https://www.sciencedirect.com/science/article/pii/S1566253525007729) [code](https://github.com/LYXRhythm/KFGOD)
+- Identifying Outliers via Local Granular-Ball Density (TNNLS) [pdf](https://ieeexplore.ieee.org/abstract/document/11073180) [code](https://github.com/Mxeron/GBDO)
+- GBMOD: A granular-ball mean-shift outlier detector (PR) [pdf](https://www.sciencedirect.com/science/article/pii/S0031320324008665) [code](https://github.com/cstzsthl/GBMOD)
+- Granular-ball computing-based Random Walk for anomaly detection (PR) [pdf](https://www.sciencedirect.com/science/article/pii/S0031320325002481) [code](https://github.com/optimusprimeyy/GBRAD)
+
+If any work is missing, you are welcome to open an issue, or contact me via email (txf0620@gmail.com) or WeChat (txf_06_20). Many thanks to the community for their efforts. 🌹🌹
+
 ## News
-- 2025-03-15: Release codes for reproducing other benchmarks in the folder ["test"](./test). Thanks, [@Zhiyu Chen](https://github.com/czy629).
+- 2025-03-15: Release codes for **reproducing other benchmarks** in the folder ["test"](./test). Thanks, [@Zhiyu Chen](https://github.com/czy629).
 - 2024-12-24: Our paper is accepted by IEEE Transactions on Knowledge and Data Engineering.
 - 2024-09-13: Release codes for the main experiment.
 
