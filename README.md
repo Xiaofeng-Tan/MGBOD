@@ -16,8 +16,8 @@ Here are some other outstanding outlier detection works based on Granular Balls.
 
 If any work is missing, you are welcome to open an issue, or contact me via email (txf0620@gmail.com) or WeChat (txf_06_20). Many thanks to the community for their efforts. 🌹🌹
 
-## News
-- 2025-03-15: Release codes for **reproducing other benchmarks** in the folder ["test"](./test). Thanks, [@Zhiyu Chen](https://github.com/czy629).
+## 🎉🎉 News
+- 2025-03-15: Release codes for **reproducing other baselines** in the folder ["test"](./test). Thanks, [@Zhiyu Chen](https://github.com/czy629).
 - 2024-12-24: Our paper is accepted by IEEE Transactions on Knowledge and Data Engineering.
 - 2024-09-13: Release codes for the main experiment.
 
