@@ -26,7 +26,7 @@
 This repository provides the official implementation of the TKDE 2025 paper "**Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls**". For any questions, please feel free to contact us via 📧 email (xiaofengtan@seu.edu.cn) or WeChat (txf_06_20)!
 
 ## 🎉 News
-- **2025-11-12**: Released **visualization codes** (matching the style of figures below) in the ["vis_gb.py"](./main/vis_gb.py) folder. Thanks to Peng Dai for his valuable suggestion.
+- **2025-11-12**: Released **visualization codes** (matching the style of figures below) in the ["vis_gb.py"](./main/vis_gb.py). Thanks to Peng Dai for his valuable suggestion.
 - **2025-03-15**: Released codes for **reproducing other baselines** in the ["test"](./test) folder. Thanks to [@Zhiyu Chen](https://github.com/czy629).
 - **2024-12-24**: Our paper has been accepted by IEEE Transactions on Knowledge and Data Engineering.
 - **2024-09-13**: Released the main experiment codes.
