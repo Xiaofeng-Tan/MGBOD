@@ -1,10 +1,10 @@
 <h1 align="center"><strong>Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls</strong></h1>
 <p align="center">
-  <a href='#' target='_blank'>Can Gao<sup>1</sup></a>&emsp;
+  Can Gao<sup>1</sup>&emsp;
   <a href='https://xiaofeng-tan.github.io/' target='_blank'>Xiaofeng Tan<sup>1</sup></a>&emsp;
-  <a href='#' target='_blank'>Jie Zhou<sup>1</sup></a>&emsp;
-  <a href='#' target='_blank'>Weiping Ding<sup>2</sup></a>&emsp;
-  <a href='#' target='_blank'>Witold Pedrycz<sup>3</sup></a>&emsp;
+  Jie Zhou<sup>1</sup>&emsp;
+  Weiping Ding<sup>2</sup>&emsp;
+  Witold Pedrycz<sup>3</sup>&emsp;
   <br>
   <sup>1</sup>Shenzhen University&emsp;
   <sup>2</sup>Nantong University&emsp;
