@@ -26,8 +26,9 @@
 This repository provides the official implementation of the TKDE 2025 paper "**Fuzzy Granule Density-Based Outlier Detection with Multi-Scale Granular Balls**". For any questions, please feel free to contact us via 📧 email (xiaofengtan@seu.edu.cn) or WeChat (txf_06_20)!
 
 ## 🎉 News
-- **2025-11-12**: Released **visualization codes** (matching the style of figures below) in the ["vis_gb.py"](./main/vis_gb.py). Thanks to Peng Dai for his valuable suggestion.
-- **2025-03-15**: Released codes for **reproducing other baselines** in the ["test"](./test) folder. Thanks to [@Zhiyu Chen](https://github.com/czy629).
+- **2025-12-16**: **Major refactoring** - Reorganized project with cleaner structure: `src/` for core code, `scripts/` for executables, `configs/` for parameters, `docs/` for documentation. Removed legacy `main/` directory.
+- **2025-11-12**: Released **visualization codes** in [`visualize.py`](./visualize.py). Thanks to Peng Dai for his valuable suggestion.
+- **2025-03-15**: Released codes for **reproducing other baselines** in the [`test/`](./test) folder. Thanks to [@Zhiyu Chen](https://github.com/czy629).
 - **2024-12-24**: Our paper has been accepted by IEEE Transactions on Knowledge and Data Engineering.
 - **2024-09-13**: Released the main experiment codes.
 
@@ -49,53 +50,69 @@ Outlier detection involves identifying anomalous samples that significantly devi
 
 ## Project Structure
 ```
-.
+MGBOD/
+├── run.py                    # Quick start: run experiments
+├── visualize.py              # Quick start: run visualization
+├── requirements.txt          # Python dependencies
 ├── README.md
-├── assets
-│   ├── 1.png
-│   └── 2.png
-├── datasets
-│   ├── 15_Hepatitis.npz
-│   ├── 28_pendigits.npz
-│   ├── 31_satimage-2.npz
-│   ├── 35_SpamBase.npz
-│   ├── 45_wine.npz
-│   ├── 46_WPBC.npz
-│   ├── 4_breastw.npz
-│   ├── 7_Cardiotocography.npz
-│   ├── MVTec-AD_carpet.npz
-│   ├── MVTec-AD_metal_nut.npz
-│   ├── MVTec-AD_pill.npz
-│   ├── arrhythmia.mat
-│   ├── autos_variant1.mat
-│   ├── cardio.mat
-│   ├── chess_nowin_227_variant1.mat
-│   ├── ionosphere_b_24_variant1.mat
-│   ├── iris_Irisvirginica_11_variant1.mat
-│   ├── mammography.mat
-│   ├── thyroid_disease_variant1.mat
-│   └── wdbc_M_39_variant1.mat
-├── main
-│   ├── FRS_OD.py
-│   ├── GB.py
-│   ├── __pycache__
-│   │   ├── FRS_OD.cpython-310.pyc
-│   │   ├── GB.cpython-310.pyc
-│   │   └── units.cpython-310.pyc
-│   ├── main.py
-│   ├── paramaters.pkl
-│   └── units.py
-├── paramaters.pkl
-├── requirements.txt
-└── results
+│
+├── configs/                  # Configuration files
+│   └── parameters.pkl        # Hyperparameter settings (δ, λ)
+│
+├── scripts/                  # Executable scripts
+│   ├── run_experiment.py     # Main experiment script
+│   └── run_visualization.py  # Granular ball visualization
+│
+├── src/                      # Source code
+│   ├── __init__.py
+│   ├── detector.py           # High-level MGBOD API
+│   ├── core/                 # Core algorithms
+│   │   ├── frs_od.py         # FRS-based outlier detection
+│   │   └── granular_ball.py  # Granular ball generation
+│   ├── utils/                # Utilities
+│   │   ├── data.py           # Data loading
+│   │   └── metrics.py        # Evaluation metrics
+│   └── visualization/        # Plotting
+│       └── plot.py           # GB visualization
+│
+├── datasets/                 # Dataset files (.npz, .mat)
+├── results/                  # Experiment outputs
+├── figures/                  # Visualization outputs
+├── docs/                     # Documentation & appendix
+│   ├── Appendix_A_Relationship_Analysis.pdf
+│   └── The detailed description of datasets.pdf
+├── assets/                   # README images
+└── test/                     # Baseline comparison scripts
 ```
 
 ## Setup
 ### Environment
 
-~~conda env create -f environment.yml~~
+**Python Version**: Python 3.8+ recommended
 
-Unfortunately, the environment configuration was not exported before the system update. However, our approach is not highly sensitive to specific environments. If you encounter any issues while running the code, please don't hesitate to contact us—we'll be happy to assist! 😊
+**Option 1: Using pip (Recommended)**
+```bash
+pip install -r requirements.txt
+```
+
+**Option 2: Using conda**
+```bash
+conda create -n mgbod python=3.10
+conda activate mgbod
+pip install -r requirements.txt
+```
+
+**Required Dependencies:**
+| Package | Version | Description |
+|---------|---------|-------------|
+| numpy | >=1.21.0 | Numerical computing |
+| scipy | >=1.7.0 | Scientific computing |
+| torch | >=1.10.0 | Tensor operations |
+| scikit-learn | >=1.0.0 | Machine learning (SVM) |
+| pandas | >=1.3.0 | Data manipulation |
+| openpyxl | >=3.0.0 | Excel file export |
+| mat4py | >=0.5.0 | MATLAB file loading |
+| matplotlib | >=3.4.0 | Visualization (optional) |
 
 ### Datasets
 The datasets are sourced from [BElloney](https://github.com/BElloney/Outlier-detection) and [ADBench](https://github.com/Minqi824/ADBench), and are provided in the `./datasets` directory.
@@ -127,8 +144,11 @@ The datasets are sourced from [BElloney](https://github.com/BElloney/Outlier-det
 To reproduce the results reported in our paper, run the following commands:
 
 ```bash
-cd main
-python main.py
+# Quick start
+python run.py
+
+# Or run the script directly
+python scripts/run_experiment.py
 ```
 
 The results will be saved in the `./results` directory.
@@ -136,22 +156,32 @@ The results will be saved in the `./results` directory.
 ## Visualization
 
 ```bash
-cd main
-python vis_gb.py
+# Quick start
+python visualize.py
+
+# Or run the script directly
+python scripts/run_visualization.py
 ```
+
+The figures will be saved in the `./figures` directory.
 
 ## Modules
 This project includes the following key modules:
 
-1. `./main/FRS_OD.py`: Implementation of FRS-based outlier detection methods and their variants in GB views
-2. `./main/GB.py`: Implementation of GB generation methods and view updates
-3. `./main/units.py`: Auxiliary utility functions
-4. `./paramaters.pkl`: Hyperparameter settings
+| Module | Description |
+|--------|-------------|
+| `src/core/frs_od.py` | FRS-based outlier detection (FRS_OD, FRS_OD_GB classes) |
+| `src/core/granular_ball.py` | Granular ball generation and multi-scale view updates |
+| `src/detector.py` | High-level API: `fit()`, `run_FRS()`, `OD_GB()` |
+| `src/utils/data.py` | Dataset loading for .npz and .mat formats |
+| `src/utils/metrics.py` | Evaluation metrics and group scoring |
+| `src/visualization/plot.py` | Granular ball visualization |
+| `configs/parameters.pkl` | Pre-tuned hyperparameters (δ, λ) for each dataset |
 
 ## Appendix
 Please refer to the following files for additional details:
-- ["The detailed description of datasets.pdf"](https://github.com/Xiaofeng-Tan/MGBOD/blob/main/The%20detailed%20description%20of%20datasets.pdf)
-- ["Relationship Analysis.pdf"](https://github.com/Xiaofeng-Tan/MGBOD/blob/main/Appendix_A_Relationship_Analysis.pdf)
+- [The detailed description of datasets.pdf](./docs/The%20detailed%20description%20of%20datasets.pdf)
+- [Appendix A: Relationship Analysis.pdf](./docs/Appendix_A_Relationship_Analysis.pdf)
 
 ## Acknowledgement
 This work builds upon several excellent research works and open-source projects. We sincerely thank all the authors for their contributions:
