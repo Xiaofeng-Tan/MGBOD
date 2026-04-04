@@ -40,6 +40,8 @@ Here are some notable outlier detection works based on Granular Balls:
 - **GBMOD: A granular-ball mean-shift outlier detector** (PR) [[pdf](https://www.sciencedirect.com/science/article/pii/S0031320324008665)] [[code](https://github.com/cstzsthl/GBMOD)]
 - **Granular-ball computing-based Random Walk for anomaly detection** (PR) [[pdf](https://www.sciencedirect.com/science/article/pii/S0031320325002481)] [[code](https://github.com/optimusprimeyy/GBRAD)]
 - **GBNOD: Granular-ball neighborhood outlier detection** (Neurocomputing) [[pdf](https://www.sciencedirect.com/science/article/abs/pii/S0925231225031017)] [[code](https://github.com/Mxeron/GBNOD)]
+- **Outlier Detection Based on Local Dynamic Granular-Ball Computing** (Neurocomputing) [[pdf](https://www.sciencedirect.com/science/article/pii/S0925231226009124)]
+- **Fusing Local Density and Approximate Distance for Nonparametric Outlier Detection** (Applied Soft Computing) [[pdf](https://www.sciencedirect.com/science/article/pii/S1568494625012116)]
 
 If any relevant work is missing, please feel free to open an issue or contact us via email (txf0620@gmail.com) or WeChat (txf_06_20). We greatly appreciate the contributions from the research community. 🌹
 
